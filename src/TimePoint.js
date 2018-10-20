@@ -502,7 +502,7 @@ var TimePoint = (function () {
 
                 var date = new Date(0);
 
-                date.setHours(0)
+                date.setHours(0);
 
                 if (!isNaN(year)) {
                     date.setFullYear(year);
