@@ -1,0 +1,19 @@
+{
+  "name": "timepoint",
+  "version": "1.0.0",
+  "description": "An immutable date formatter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dev-tools/server/server.js"
+  },
+  "keywords": [
+    "timepoint",
+    "dateformatter"
+  ],
+  "author": "JOHN YUAN",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.16.3"
+  }
+}
