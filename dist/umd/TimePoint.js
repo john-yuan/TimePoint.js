@@ -199,16 +199,11 @@ var TimePoint = (function () {
     };
 
     /**
-     * 格式化当前时间
+     * 解析当前时间，并返回时间组件的映射表
      *
-     * @param {string} [format='YYYY-MM-DD hh:mm:ss']
-     * @returns {string}
+     * @returns {object} 时间组件映射表
      */
-    TimePoint.prototype.format = function (format) {
-        if (typeof format !== 'string') {
-            format = 'YYYY-MM-DD hh:mm:ss';
-        }
-
+    TimePoint.prototype.map = function () {
         var date = new Date(this.getTime());
         var YYYY = date.getFullYear();
         var YY   = (YYYY + '').substr(-2);
@@ -222,19 +217,54 @@ var TimePoint = (function () {
         var mm   = m < 10 ? ('0' + m) : m;
         var s    = date.getSeconds();
         var ss   = s < 10 ? ('0' + s) : s;
+        var S    = date.getMilliseconds();
+        var SS   = S < 10 ? ('0' + S) : S;
+        var SSS  = S < 100 ? ('0' + SS) : S;
 
-        format = format.replace(/YYYY/g, YYYY);
-        format = format.replace(/YY/g, YY);
-        format = format.replace(/MM/g, MM);
-        format = format.replace(/M/g, M);
-        format = format.replace(/DD/g, DD);
-        format = format.replace(/D/g, D);
-        format = format.replace(/hh/g, hh);
-        format = format.replace(/h/g, h);
-        format = format.replace(/mm/g, mm);
-        format = format.replace(/m/g, m);
-        format = format.replace(/ss/g, ss);
-        format = format.replace(/s/g, s);
+        return {
+            YYYY: '' + YYYY,
+            YY: '' + YY,
+            M: '' + M,
+            MM: '' + MM,
+            D: '' + D,
+            DD: '' + DD,
+            h: '' + h,
+            hh: '' + hh,
+            m: '' + m,
+            mm: '' + mm,
+            s: '' + s,
+            ss: '' + ss,
+            S: '' + S,
+            SS: '' + SS,
+            SSS: '' + SSS
+        };
+    };
+
+    /**
+     * 格式化当前时间
+     *
+     * @param {string} [format='YYYY-MM-DD hh:mm:ss']
+     * @returns {string}
+     */
+    TimePoint.prototype.format = function (format) {
+        if (typeof format !== 'string') {
+            format = 'YYYY-MM-DD hh:mm:ss';
+        }
+
+        var map = this.map();
+
+        format = format.replace(/YYYY/g, map.YYYY);
+        format = format.replace(/YY/g, map.YY);
+        format = format.replace(/MM/g, map.MM);
+        format = format.replace(/M/g, map.M);
+        format = format.replace(/DD/g, map.DD);
+        format = format.replace(/D/g, map.D);
+        format = format.replace(/hh/g, map.hh);
+        format = format.replace(/h/g, map.h);
+        format = format.replace(/mm/g, map.mm);
+        format = format.replace(/m/g, map.m);
+        format = format.replace(/ss/g, map.ss);
+        format = format.replace(/s/g, map.s);
 
         return format;
     };
