@@ -265,6 +265,9 @@ var TimePoint = (function () {
         format = format.replace(/m/g, map.m);
         format = format.replace(/ss/g, map.ss);
         format = format.replace(/s/g, map.s);
+        format = format.replace(/SSS/g, map.SSS);
+        format = format.replace(/SS/g, map.SS);
+        format = format.replace(/S/g, map.S);
 
         return format;
     };
