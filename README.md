@@ -58,7 +58,7 @@ TimePoint.format([format])
 是一个简单的日期格式化函数，能满足大部分场景下的需求。但是如果你的格式较为复杂，请使用：
 
 ```js
-TimePoint.prototype.stringify([template]);
+TimePoint.prototype.stringify([template])
 ```
 
 函数进行模板渲染。示例如下：
