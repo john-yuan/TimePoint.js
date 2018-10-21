@@ -49,6 +49,27 @@ console.log(t1.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 ```
 
+需要说明的是：
+
+```js
+TimePoint.format([format])
+```
+
+是一个简单的日期格式化函数，能满足大部分场景下的需求。但是如果你的格式较为复杂，请使用：
+
+```js
+TimePoint.prototype.stringify([template]);
+```
+
+函数进行模板渲染。示例如下：
+
+```js
+var t3 = TimePoint.from('2018-10-01 09:30:00');
+var text = t3.stringify('模板引擎使用 \\{YYYY\\} 表示年份，比如当前年份为：{YYYY}');
+
+console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年份为：2018
+```
+
 ### 示例三：查询指定月份的最后一天为多少号
 
 问：2020年2月的最后一天是28号还是29号？

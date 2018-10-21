@@ -27,6 +27,11 @@
 
             console.log(t1.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
             console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
+
+            var t3 = TimePoint.from('2018-10-01 09:30:00');
+            var text = t3.stringify('模板引擎使用 \\{YYYY\\} 表示年份，比如当前年份为：{YYYY}');
+
+            console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年份为：2018
         })();
 
         console.log('');
