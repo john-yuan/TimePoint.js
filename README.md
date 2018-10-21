@@ -1,6 +1,8 @@
 # TimePoint.js
 
-TimePoint 是一个时间工具类，用于简化时间的解析和格式化操作，并提供常用的时间计算函数。TimePoint 类被有意设计为状态不可变的（Immutable），这意味着一个 TimePoint 实例被创建之后，无论调用什么方法，它本身的状态都不会被改变。
+[![Build Status](https://travis-ci.org/john-yuan/TimePoint.js.svg?branch=master)](https://travis-ci.org/john-yuan/TimePoint.js)
+
+一个时间工具类，用于简化时间的解析和格式化操作，并提供常用的时间计算函数。TimePoint 类被有意设计为状态不可变的（Immutable），这意味着一个 TimePoint 实例被创建之后，无论调用什么方法，它本身的状态都不会被改变。
 
 ## 目录
 
