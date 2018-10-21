@@ -25,7 +25,7 @@ var TimePoint = (function () {
      * @returns {TimePoint}
      */
     var TimePoint = function (time) {
-        this._time = TimePoint.parse(time);
+        this._time = TimePoint.parseTime(time);
     };
 
     /**
@@ -544,7 +544,7 @@ var TimePoint = (function () {
      * @param {number|string|Date|TimePoint} [time=null]
      * @returns {number}
      */
-    TimePoint.parse = function (time) {
+    TimePoint.parseTime = function (time) {
         var type = typeof time;
 
         // 检查是不是日期字符串
