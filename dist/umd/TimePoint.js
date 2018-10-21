@@ -542,7 +542,7 @@ var TimePoint = (function () {
                 time = time.replace(/\s*\:\s*/g, ':');
                 time = time.replace(/T/ig, ' ');
                 // 将日期字符串拆分为数组
-                time = time.split(/\s+|\-|\/|\:/);
+                time = time.split(/\s+|\-|\/|\:|\./);
 
                 var year = parseInt(time[0], 10);
                 var month = parseInt(time[1], 10);
@@ -550,6 +550,7 @@ var TimePoint = (function () {
                 var hour = parseInt(time[3], 10);
                 var minute = parseInt(time[4], 10);
                 var second = parseInt(time[5], 10);
+                var ms = parseMs(time[6]);
 
                 var date = new Date(0);
 
@@ -579,6 +580,10 @@ var TimePoint = (function () {
                     date.setSeconds(second);
                 }
 
+                if (!isNaN(ms)) {
+                    date.setMilliseconds(ms);
+                }
+
                 time = date.getTime();
             }
         // 如果类型为数字则什么都不做
@@ -602,8 +607,33 @@ var TimePoint = (function () {
         return isNaN(time) ? TimePoint.now() : time;
     };
 
+    /**
+     * 解析毫秒字符串
+     *
+     * 1. '1' => 100
+     * 2. '10' => 100
+     * 3. '01' => 10
+     * 4. '001' => 1
+     * 5. '0001' => 0
+     *
+     * @param {string} ms
+     * @returns {number}
+     */
+    var parseMs = function (ms) {
+        if (typeof ms === 'string') {
+            while (ms.length < 3) {
+                ms += '0';
+            }
+            ms = ms.substr(0, 3);
+            return parseInt(ms, 10);
+        } else {
+            return 0;
+        }
+    };
+
     // 导出接口
     return TimePoint;
+
 })();
 
 return TimePoint;
