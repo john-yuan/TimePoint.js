@@ -118,11 +118,11 @@ describe('TimePoint.from', () => {
         assert.equal(t1, t2)
     })
 
-    it(`TimePoint.from(0).format() === '1970-01-01 08:00:00'`, () => {
-        const format = TimePoint.from(0).format()
-        const expected = '1970-01-01 08:00:00'
+    it(`TimePoint.from(0).getTime() === new Date(0).getTime()`, () => {
+        const t = TimePoint.from(0)
+        const d = new Date(0);
 
-        assert.equal(format, expected)
+        assert.equal(t.getTime(), d.getTime())
     })
 
 })
