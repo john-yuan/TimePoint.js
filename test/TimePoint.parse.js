@@ -69,7 +69,7 @@ describe('TimePoint.parse', () => {
         assert.equal(format, expected)
     })
 
-    it(`parse TimePoint instance parse a TimePoint instance`, () => {
+    it(`create TimePoint instance from a TimePoint instance`, () => {
         const t1 = new TimePoint()
 
         const d1 = Date.now();
@@ -83,7 +83,7 @@ describe('TimePoint.parse', () => {
         assert.equal(t1.getTime(), t2.getTime())
     })
 
-    it(`parse TimePoint instance parse a Date instance`, () => {
+    it(`create TimePoint instance from a Date instance`, () => {
         const d = new Date()
         const t = new TimePoint(d)
 
