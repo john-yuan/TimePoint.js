@@ -252,6 +252,8 @@ var TimePoint = (function () {
     /**
      * 格式化当前时间
      *
+     * 如果参数类型不是字符串，则使用默认参数
+     *
      * @param {string} [format='YYYY-MM-DD hh:mm:ss']
      * @returns {string}
      */
@@ -284,12 +286,29 @@ var TimePoint = (function () {
     /**
      * format 函数的别名
      *
+     * 如果参数类型不是字符串，则使用默认参数
+     *
      * @see TimePoint#format
      * @param {string} [format='YYYY-MM-DD hh:mm:ss']
      * @returns {string}
      */
     TimePoint.prototype.toString = function (format) {
         return this.format(format);
+    };
+
+    /**
+     * 使用模板引擎格式化日期字符串
+     *
+     * 如果参数类型不是字符串，则使用默认参数
+     *
+     * @param {string} [template='{YYYY}-{MM}-{DD} {hh}:{mm}:{ss}']
+     * @returns {string}
+     */
+    TimePoint.prototype.stringify = function (template) {
+        if (typeof template !== 'string') {
+            template = '{YYYY}-{MM}-{DD} {hh}:{mm}:{ss}';
+        }
+        return TimePoint.tpl(template, this.map());
     };
 
     ///////////////////////////////////////////////////////////////////////////
