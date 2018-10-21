@@ -300,7 +300,7 @@ var TimePoint = (function () {
      * @param {string|number|Date|TimePoint} [time=null]
      * @returns {TimePoint}
      */
-    TimePoint.create = function (time) {
+    TimePoint.from = function (time) {
         return new TimePoint(time);
     };
 
@@ -321,7 +321,7 @@ var TimePoint = (function () {
      * @returns {TimePoint}
      */
     TimePoint.at = function (time) {
-        return TimePoint.create().at(time);
+        return TimePoint.from().at(time);
     };
 
     /**
