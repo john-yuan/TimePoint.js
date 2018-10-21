@@ -173,8 +173,7 @@ console.log(t7.getTime() === t8.getTime()); // true
 console.log(t7.getTime() === t9.getTime()); // true
 console.log(t7.getTime() === t10.getTime()); // true
 
-// 对于没有传入的日期，日期默认被设置为 1
-// 对于没有传入的时间部分，其默认值会被设置为 0
+// 对于没有传入的日期部分，其默认值会被设置为 new Date(0) 对应的值
 var t11 = TimePoint.parse('2018-06');
 var t12 = TimePoint.parse('2018-06-02');
 var t13 = TimePoint.parse('2018-06-02 10');

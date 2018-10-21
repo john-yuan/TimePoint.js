@@ -55,20 +55,6 @@ describe('TimePoint.parse', () => {
         assert.equal(time, expected)
     })
 
-    it(`TimePoint.parse('2018-10-01').format() === '2018-10-01 00:00:00'`, () => {
-        const format = TimePoint.parse('2018-10-01').format()
-        const expected = '2018-10-01 00:00:00'
-
-        assert.equal(format, expected)
-    })
-
-    it(`TimePoint.parse('2018/10/01').format() === '2018-10-01 00:00:00'`, () => {
-        const format = TimePoint.parse('2018/10/01').format()
-        const expected = '2018-10-01 00:00:00'
-
-        assert.equal(format, expected)
-    })
-
     it(`create TimePoint instance from a TimePoint instance`, () => {
         const t1 = new TimePoint()
 

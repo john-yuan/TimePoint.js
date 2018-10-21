@@ -576,13 +576,6 @@ var TimePoint = (function () {
 
                 var date = new Date(0);
 
-                date.setDate(1);  // set date before set month
-                date.setMonth(0); // month is zero-based
-                date.setHours(0);
-                date.setMinutes(0);
-                date.setSeconds(0);
-                date.setMilliseconds(0);
-
                 if (!isNaN(year)) {
                     date.setFullYear(year);
                 }
