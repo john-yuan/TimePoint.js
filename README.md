@@ -117,6 +117,128 @@ console.log(text); // 距离双11还有40天13小时38分28秒
 
 [点击此处](#二时间差值模板映射表)查看时间差值模板映射表。
 
+## API
+
+### TimePoint.parse([time])
+
+* `time` {number|string|Date|TimePoint} 需要解析的时间，默认为 null，表示当前时间
+* Returns: {TimePoint} 返回一个 TimePoint 实例
+
+1. 当没有传递 `time`，或者 `time` 值为 `null` 或者 `undefined` 时，则以当前时间创建实例：
+
+```js
+var t = TimePoint.parse();
+
+console.log(t.format()); // 系统当前时间
+```
+
+2. 当 `time` 的类型为 `number` 时，则以此数字为时间创建实例：
+
+```js
+var t = TimePoint.parse(60000);
+
+console.log(t.getTime()); // 60000
+```
+
+3. 当 `time` 的类型为 `string` 时，解析规则如下：
+
+```js
+// 标准的时间字符串
+var t1 = TimePoint.parse('2018-10-01 09:30:00');
+var t2 = TimePoint.parse('2018-10-01T09:30:00');
+var t3 = TimePoint.parse('2018/10/01 09:30:00');
+
+// 没有前置 0 的时间字符串
+var t4 = TimePoint.parse('2018-10-1 9:30');
+var t5 = TimePoint.parse('2018-10-1T9:30');
+var t6 = TimePoint.parse('2018/10/1 9:30');
+
+console.log(t1.getTime() === t2.getTime()); // true
+console.log(t1.getTime() === t3.getTime()); // true
+console.log(t1.getTime() === t4.getTime()); // true
+console.log(t1.getTime() === t5.getTime()); // true
+console.log(t1.getTime() === t6.getTime()); // true
+
+// 解析月份
+var t7  = TimePoint.parse('2018-01');
+var t8  = TimePoint.parse('2018/01');
+var t9  = TimePoint.parse('2018-1');
+var t10 = TimePoint.parse('2018/1');
+
+console.log(t7.format()); // 2018-01-01 00:00:00
+console.log(t7.getTime() === t8.getTime()); // true
+console.log(t7.getTime() === t9.getTime()); // true
+console.log(t7.getTime() === t10.getTime()); // true
+
+// 对于没有传入的日期，日期默认被设置为 1
+// 对于没有传入的时间部分，其默认值会被设置为 0
+var t11 = TimePoint.parse('2018-06');
+var t12 = TimePoint.parse('2018-06-02');
+var t13 = TimePoint.parse('2018-06-02 10');
+var t14 = TimePoint.parse('2018-06-02 10:30');
+var t15 = TimePoint.parse('2018-06-02 10:30:30');
+
+console.log(t11.format()); // 2018-06-01 00:00:00
+console.log(t12.format()); // 2018-06-02 00:00:00
+console.log(t13.format()); // 2018-06-02 10:00:00
+console.log(t14.format()); // 2018-06-02 10:30:00
+console.log(t15.format()); // 2018-06-02 10:30:30
+
+// 解析时间，包含毫秒数。一下三个时间完全相等，毫秒数都为 100
+var t16 = TimePoint.parse('2018-10-01 12:00:00.1');
+var t17 = TimePoint.parse('2018-10-01 12:00:00.10');
+var t18 = TimePoint.parse('2018-10-01 12:00:00.100');
+
+console.log(t16.getTime()); // 1538366400100
+console.log(t16.getTime() === t17.getTime()); // true
+console.log(t16.getTime() === t18.getTime()); // true
+
+// 如果需要将毫秒数设置为 1，请使用以下代码
+var t19 = TimePoint.parse('2018-10-01 12:00:00.001');
+console.log(t19.getTime()); // 1538366400001
+
+// 当字符串为全数字组成时，该字符串会被当做 number 类型处理
+var t20 = TimePoint.parse('1538366400000');
+var t21 = TimePoint.parse(1538366400000);
+
+console.log(t20.getTime() === t21.getTime()); // true
+
+// 也正是由于上述原因，我们不能初始化年份
+var t22 = TimePoint.parse('2018'); // 注意：此处并不代表 2018 年！
+
+console.log(t22.getTime() === 2018); // true
+console.log(t22.getDate().getFullYear() !== 2018); // true
+```
+
+4. 当 `time` 类型为 `Date` 时，则以该日期对象对应的毫秒数创建实例：
+
+```js
+var d = new Date();
+var t = TimePoint.parse(d);
+
+console.log(d.getTime() === t.getTime()); // true
+```
+
+5. 当 `time` 类型为 `TimePoint` 时，则以该 `TimePoint` 对象对应的毫秒数创建实例：
+
+```js
+var t1 = TimePoint.parse();
+var t2 = TimePoint.parse(t1);
+
+console.log(t1.getTime() === t2.getTime()); // true
+```
+
+### TimePoint.prototype.getTime()
+
+* Returns: {number} 返回当前时间点对应的毫秒数
+
+```js
+var t = TimePoint.parse('2018-10-01 09:30:00');
+var time = t.getTime();
+
+console.log(time); // 1538357400000
+```
+
 ## 附录
 
 ### 一、日期模板映射表
