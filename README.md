@@ -51,7 +51,7 @@ console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 
 ### 示例三：查询指定月份的最后一天为多少号
 
-问：2020 年的 2 月的最后一天是 28 号还是 29 号？
+问：2020年2月的最后一天是28号还是29号？
 
 答：
 
@@ -61,4 +61,19 @@ var lastDay2 = TimePoint.lastDayInMonth(2020, 2);              // 解法2
 
 console.log(lastDay1); // 29
 console.log(lastDay2); // 29
+```
+
+### 示例四：计算时间距离
+
+问：假设现在是2018年10月1日10点21分32秒，那么现在距离双11还有多长时间？
+
+答：
+
+```js
+var t1 = TimePoint.from('2018-10-01 10:21:32');
+var t2 = TimePoint.from('2018-11-11 00:00:00');
+var diff = TimePoint.timeDiffDetail(t1, t2);
+var text = diff.stringify('距离双11还有{d}天{h}小时{m}分{s}秒');
+
+console.log(text); // 距离双11还有40天13小时38分28秒
 ```

@@ -469,12 +469,13 @@ var TimePoint = (function () {
         var ms = diff;
 
         return {
-            day: day,
-            hour: hour,
-            min: min,
-            sec: sec,
-            ms: ms,
-            sign: sign
+            d: day,
+            h: hour,
+            m: min,
+            s: sec,
+            S: ms,
+            n: sign,
+            stringify: timeDiffStringify
         };
     };
 
@@ -680,6 +681,16 @@ var TimePoint = (function () {
         } else {
             return 0;
         }
+    };
+
+    /**
+     * 使用模板引擎格式化 timeDiff 数据
+     *
+     * @param {string} template
+     * @returns {string}
+     */
+    var timeDiffStringify = function (template) {
+        return TimePoint.tpl(template, this);
     };
 
     // 导出接口
