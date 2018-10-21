@@ -7,6 +7,49 @@
     <title>TimePoint</title>
 </head>
 <body>
-    <script src="../dist/umd/TimePoint.js"></script>
+    <script src="../src/TimePoint.js"></script>
+    <script>
+        console.log('示例一：');
+        (function () {
+            var start = TimePoint.at('19:00');          // 开始时间为 19:00
+            var end = start.nextDay().at('02:30');      // 结束时间为第二天 02:30
+            var hours = TimePoint.hourDiff(start, end); // 7.5
+            var salary = hours * 50;                    // 375
+
+            console.log('小明的加班费为: ' + salary + '元');
+        })();
+
+        console.log('');
+        console.log('示例二：');
+        (function () {
+            var t1 = TimePoint.from('2018-10-01 09:30:00'); // 解析时间字符串
+            var t2 = TimePoint.from(1538357400000);         // 或者解析时间对应的毫秒数
+
+            console.log(t1.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
+            console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
+        })();
+
+        console.log('');
+        console.log('示例三：');
+        (function () {
+            var lastDay1 = TimePoint.from('2020-02').lastDayOfThisMonth(); // 解法1
+            var lastDay2 = TimePoint.lastDayInMonth(2020, 2);              // 解法2
+
+            console.log(lastDay1); // 29
+            console.log(lastDay2); // 29
+        })();
+
+        console.log('');
+        console.log('调试：TimePoint.tpl');
+        (function () {
+            var tpl = '{category}/posts/{post_id}.html';
+            var url = TimePoint.tpl(tpl, {
+                category: 'javascript',
+                post_id: 1
+            });
+
+            console.log(url);
+        })();
+    </script>
 </body>
 </html>
