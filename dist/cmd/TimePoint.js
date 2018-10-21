@@ -329,7 +329,7 @@ var TimePoint = (function () {
      * @returns {number}
      */
     TimePoint.now = function () {
-        return (new Date()).getTime();
+        return new Date().getTime();
     };
 
     /**
