@@ -44,7 +44,9 @@ console.log('小明的加班费为: ' + salary + '元');
 ```js
 var t1 = TimePoint.from('2018-10-01 09:30:00'); // 解析时间字符串
 var t2 = TimePoint.from(1538357400000);         // 或者解析时间对应的毫秒数
-var text = t1.format('YYYY年M月D日 hh:mm');      // 2018年10月1日 09:30
+
+console.log(t1.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
+console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 ```
 
 ### 示例三：查询指定月份的最后一天为多少号
