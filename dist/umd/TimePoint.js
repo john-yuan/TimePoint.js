@@ -47,6 +47,16 @@ var TimePoint = (function () {
     };
 
     /**
+     * 获取当前时间点对应月份中的最后一天
+     *
+     * @returns {number} 28, 29, 30 或 31
+     */
+    TimePoint.prototype.lastDayOfThisMonth = function () {
+        var date = this.getDate();
+        return TimePoint.lastDayInMonth(date.getFullYear(), date.getMonth() + 1);
+    };
+
+    /**
      * 克隆当前对象
      *
      * @returns {TimePoint} 一个新的 TimePoint 实例
@@ -479,8 +489,8 @@ var TimePoint = (function () {
     /**
      * 查询指定月份的最后一天
      *
-     * @param {number} year
-     * @param {number} month
+     * @param {number} year 表示年份的整数
+     * @param {number} month 表示月份的整数，范围为 1 到 12
      * @returns {number}
      */
     TimePoint.lastDayInMonth = function (year, month) {

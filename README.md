@@ -46,3 +46,15 @@ var t1 = TimePoint.from('2018-10-01 09:30:00'); // 解析时间字符串
 var t2 = TimePoint.from(1538357400000);         // 或者解析时间对应的毫秒数
 var text = t1.format('YYYY年M月D日 hh:mm');      // 2018年10月1日 09:30
 ```
+
+### 示例三：查询指定月份的最后一天为多少号
+
+问：2020 年的 2 月的最后一天是 28 号还是 29 号？
+
+答：
+
+```js
+var lastDay1 = TimePoint.from('2020-02').lastDayOfThisMonth();
+// 或者
+var lastDay2 = TimePoint.lastDayInMonth(2020, 2);
+```
