@@ -643,7 +643,7 @@ var TimePoint = (function () {
         // 确保 template 为字符串类型
         template = '' + template;
 
-        return template.replace(/(^|[^\\])\{(.*?)([^\\])\}/g, function (s, l, m, r) {
+        return template.replace(/(^|[^\\])\{([^\{]*?)([^\\])\}/g, function (s, l, m, r) {
 
             var key = m + r;
 
