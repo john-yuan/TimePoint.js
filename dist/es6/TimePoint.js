@@ -319,7 +319,7 @@ var TimePoint = (function () {
      * @param {string|number|Date|TimePoint} [time=null]
      * @returns {TimePoint}
      */
-    TimePoint.init = function (time) {
+    TimePoint.parse = function (time) {
         return new TimePoint(time);
     };
 
@@ -340,7 +340,7 @@ var TimePoint = (function () {
      * @returns {TimePoint}
      */
     TimePoint.at = function (time) {
-        return TimePoint.init().at(time);
+        return TimePoint.parse().at(time);
     };
 
     /**

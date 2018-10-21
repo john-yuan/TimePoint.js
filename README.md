@@ -56,8 +56,8 @@ console.log('小明的加班费为: ' + salary + '元');
 那么我可以使用下面的代码完成这个转换：
 
 ```js
-var t1 = TimePoint.init('2018-10-01 09:30:00'); // 解析时间字符串
-var t2 = TimePoint.init(1538357400000);         // 或者解析时间对应的毫秒数
+var t1 = TimePoint.parse('2018-10-01 09:30:00'); // 解析时间字符串
+var t2 = TimePoint.parse(1538357400000);         // 或者解析时间对应的毫秒数
 
 console.log(t1.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
@@ -78,7 +78,7 @@ TimePoint.prototype.stringify([template])
 函数进行模板渲染。示例如下：
 
 ```js
-var t3 = TimePoint.init('2018-10-01 09:30:00');
+var t3 = TimePoint.parse('2018-10-01 09:30:00');
 var text = t3.stringify('模板引擎使用 \\{YYYY\\} 表示年份，比如当前年份为：{YYYY}');
 
 console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年份为：2018
@@ -93,7 +93,7 @@ console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年�
 答：
 
 ```js
-var lastDay1 = TimePoint.init('2020-02').lastDayOfThisMonth(); // 解法1
+var lastDay1 = TimePoint.parse('2020-02').lastDayOfThisMonth(); // 解法1
 var lastDay2 = TimePoint.lastDayInMonth(2020, 2);              // 解法2
 
 console.log(lastDay1); // 29
@@ -107,8 +107,8 @@ console.log(lastDay2); // 29
 答：
 
 ```js
-var t1 = TimePoint.init('2018-10-01 10:21:32');
-var t2 = TimePoint.init('2018-11-11 00:00:00');
+var t1 = TimePoint.parse('2018-10-01 10:21:32');
+var t2 = TimePoint.parse('2018-11-11 00:00:00');
 var diff = TimePoint.timeDiffDetail(t1, t2);
 var text = diff.stringify('距离双11还有{d}天{h}小时{m}分{s}秒');
 
