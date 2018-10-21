@@ -530,6 +530,7 @@ var TimePoint = (function () {
                 time = time.replace(/\s*\-\s*/g, '-');
                 time = time.replace(/\s*\/\s*/g, '/');
                 time = time.replace(/\s*\:\s*/g, ':');
+                time = time.replace(/T/ig, ' ');
                 // 将日期字符串拆分为数组
                 time = time.split(/\s+|\-|\/|\:/);
 
