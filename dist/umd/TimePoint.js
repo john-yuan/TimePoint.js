@@ -620,6 +620,36 @@ var TimePoint = (function () {
     };
 
     /**
+     * 一个简单的模板引擎，以 {} 为分界符
+     *
+     * @param {string} template
+     * @param {Object} data
+     * @returns {string}
+     */
+    TimePoint.tpl = function (template, data) {
+        // 如果参数为 null 或 undefined 则使用默认值
+        template = template == null ? '' : template;
+        data = data == null ? {} : data;
+        // 确保 template 为字符串类型
+        template = '' + template;
+
+        return template.replace(/(^|[^\\])\{(.*?)([^\\])\}/g, function (s, l, m, r) {
+
+            var key = m + r;
+
+            key = key.replace(/^\s+|\s+$/g, '');
+
+            var val = data[key];
+
+            // 如果 val 为 undefined 或者 null 则返回空字符串
+            val = val == null ? '' : val;
+
+            return l + val;
+
+        }).replace(/\\\{/, '{').replace(/\\\}/, '}');
+    };
+
+    /**
      * 解析毫秒字符串
      *
      * 1. '1' => 100
