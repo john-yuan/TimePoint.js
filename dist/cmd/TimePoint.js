@@ -216,12 +216,9 @@ var TimePoint = (function () {
         var SS   = S < 10 ? ('0' + S) : S;
         var SSS  = S < 100 ? ('0' + SS) : S;
 
-        SS = Math.floor(S / 10);
-        SS = SS > 99 ? 99 : SS;
-        SS = SS < 10 ? ('0' + SS) : SS;
-
-        S = Math.floor(S / 100);
-        S = S > 9 ? 9 : S;
+        SSS = '' + SSS;
+        S = SSS.substr(0, 1);
+        SS = SSS.substr(0, 2);
 
         return {
             YYYY: '' + YYYY,
@@ -236,9 +233,9 @@ var TimePoint = (function () {
             mm: '' + mm,
             s: '' + s,
             ss: '' + ss,
-            S: '' + S,
-            SS: '' + SS,
-            SSS: '' + SSS
+            S: S,
+            SS: SS,
+            SSS: SSS
         };
     };
 
