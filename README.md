@@ -56,6 +56,9 @@ console.log(t2.format('YYYY年M月D日 hh:mm')); // 2018年10月1日 09:30
 答：
 
 ```js
-var lastDay1 = TimePoint.from('2020-02').lastDayOfThisMonth(); // 解法1：29
-var lastDay2 = TimePoint.lastDayInMonth(2020, 2);              // 解法2：29
+var lastDay1 = TimePoint.from('2020-02').lastDayOfThisMonth(); // 解法1
+var lastDay2 = TimePoint.lastDayInMonth(2020, 2);              // 解法2
+
+console.log(lastDay1); // 29
+console.log(lastDay2); // 29
 ```
