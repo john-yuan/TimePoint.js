@@ -167,11 +167,12 @@ var TimePoint = (function () {
         // 1. '12:30:59'
         // 2. '12:30'
         // 3. '12' 或者 12
-        time = ('' + (time || 0)).replace(/^\s+|\s+$/, '').split(':');
+        time = ('' + (time || 0)).replace(/^\s+|\s+$/, '').split(/\:|\./);
 
         var hour = parseInt(time[0], 10);
         var minute = parseInt(time[1], 10);
         var second = parseInt(time[2], 10);
+        var ms = parseMs(time[3]);
 
         if (!isNaN(hour)) {
             date.setHours(hour);
@@ -183,6 +184,10 @@ var TimePoint = (function () {
 
         if (!isNaN(second)) {
             date.setSeconds(second);
+        }
+
+        if (!isNaN(ms)) {
+            date.setMilliseconds(ms);
         }
 
         return new TimePoint(date.getTime());
