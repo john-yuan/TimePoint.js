@@ -557,13 +557,9 @@ var TimePoint = (function () {
             if (isNumberString) {
                 time = num;
             } else {
-                // 移除 -、/、: 周围的空格
-                time = time.replace(/\s*\-\s*/g, '-');
-                time = time.replace(/\s*\/\s*/g, '/');
-                time = time.replace(/\s*\:\s*/g, ':');
-                time = time.replace(/T/ig, ' ');
-                // 将日期字符串拆分为数组
-                time = time.split(/\s+|\-|\/|\:|\./);
+                time = time.replace(/[Tt\-\:\.\/]/g, ' ');
+                time = time.replace(/^\s+|\s+$/g, '');
+                time = time.split(/\s+/);
 
                 var year = parseInt(time[0], 10);
                 var month = parseInt(time[1], 10);
