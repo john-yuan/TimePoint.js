@@ -510,22 +510,11 @@ var TimePoint = (function () {
         month = parseInt(month, 10);
         month = isNaN(month) ? 0 : (month - 1);
 
-        var dayMap = {
-            0: 31,
-            1: TimePoint.isLeapYear(year) ? 29 : 28,
-            2: 31,
-            3: 30,
-            4: 31,
-            5: 30,
-            6: 31,
-            7: 31,
-            8: 30,
-            9: 31,
-            10: 30,
-            11: 31
-        };
-
-        return dayMap[month];
+        if (month === 1) {
+            return TimePoint.isLeapYear(year) ? 29 : 28;
+        } else {
+            return [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+        }
     };
 
     /**
