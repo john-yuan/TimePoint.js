@@ -159,10 +159,10 @@ var TimePoint = (function () {
     /**
      * 根据当前 TimePoint 创建指定时间的新对象
      *
-     * 此函数会保留当前日期的年、月、日部分，并根据传入的值设置时、分、秒，
-     * 如果没有时、分、秒则默认设置为 0，毫秒值永远为 0。
+     * 此函数会保留当前日期的年、月、日部分，并根据传入的值设置时、分、秒、毫秒，
+     * 如果没有传入则设置为 0。
      *
-     * @example timePoint.at('12:00:00')
+     * @example timePoint.at('12:00:00.000')
      * @param {string} time
      * @returns {TimePoint} 一个新的 TimePoint 实例
      */
@@ -412,8 +412,8 @@ var TimePoint = (function () {
         var t1 = new TimePoint(start);
         var t2 = new TimePoint(end);
 
-        t1 = t1.at('08:00:00');
-        t2 = t2.at('08:00:00');
+        t1 = t1.at('08:00:00.000');
+        t2 = t2.at('08:00:00.000');
 
         return TimePoint.dayDiff(t1, t2);
     };
