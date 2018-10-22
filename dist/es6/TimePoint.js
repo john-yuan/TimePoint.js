@@ -174,10 +174,10 @@ var TimePoint = (function () {
         date.setSeconds(0);
         date.setMilliseconds(0);
 
-        // 1. '12:30:59'
-        // 2. '12:30'
-        // 3. '12' 或者 12
-        time = ('' + (time || 0)).replace(/^\s+|\s+$/, '').split(/\:|\./);
+        time = ('' + (time || 0));
+        time = time.replace(/[\.\:]/g, ' ');
+        time = trim(time);
+        time = time.split(/\s+/);
 
         var hour = parseInt(time[0], 10);
         var minute = parseInt(time[1], 10);
@@ -536,7 +536,7 @@ var TimePoint = (function () {
             var isNumberString = false;
 
             // 移除首尾空白字符
-            time = time.replace(/^\s+|\s+$/g, '');
+            time = trim(time);
 
             // 检查是不是数字字符串，比如：'1538366400000'
             if (/^[0-9]+$/.test(time)) {
@@ -548,7 +548,7 @@ var TimePoint = (function () {
                 time = num;
             } else {
                 time = time.replace(/[Tt\-\:\.\/]/g, ' ');
-                time = time.replace(/^\s+|\s+$/g, '');
+                time = trim(time);
                 time = time.split(/\s+/);
 
                 var year = parseInt(time[0], 10);
@@ -630,7 +630,7 @@ var TimePoint = (function () {
 
             var key = m + r;
 
-            key = key.replace(/^\s+|\s+$/g, '');
+            key = trim(key);
 
             var val = data[key];
 
@@ -640,6 +640,15 @@ var TimePoint = (function () {
             return l + val;
 
         }).replace(/\\\{/, '{').replace(/\\\}/, '}');
+    };
+
+    /**
+     * 移除字符串首尾空白字符
+     *
+     * @param {string} str
+     */
+    var trim = function (str) {
+        return str.replace(/^\s+/, '').replace(/\s+$/, '');
     };
 
     /**
