@@ -180,8 +180,8 @@ var t13 = TimePoint.parse('2018-06-02 10');
 var t14 = TimePoint.parse('2018-06-02 10:30');
 var t15 = TimePoint.parse('2018-06-02 10:30:30');
 
-console.log(t11.format()); // 2018-06-01 00:00:00
-console.log(t12.format()); // 2018-06-02 00:00:00
+console.log(t11.format()); // 2018-06-01 08:00:00（此处系统时区为 GMT+8）
+console.log(t12.format()); // 2018-06-02 08:00:00（此处系统时区为 GMT+8）
 console.log(t13.format()); // 2018-06-02 10:00:00
 console.log(t14.format()); // 2018-06-02 10:30:00
 console.log(t15.format()); // 2018-06-02 10:30:30
