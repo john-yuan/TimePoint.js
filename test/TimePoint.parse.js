@@ -84,24 +84,24 @@ describe('TimePoint.parse', () => {
     })
 
     it(`TimePoint.parse(NaN).getTime() === TimePoint.parse().getTime()`, () => {
-        const t1 = TimePoint.parse(NaN).getTime()
-        const t2 = TimePoint.parse().getTime()
+        const t1 = TimePoint.parse(NaN)
+        const t2 = TimePoint.parse()
 
-        assert.strictEqual(t1, t2)
+        assert.strictEqual(t1.getTime(), t2.getTime())
     })
 
     it(`TimePoint.parse(null).getTime() === TimePoint.parse().getTime()`, () => {
-        const t1 = TimePoint.parse(null).getTime()
-        const t2 = TimePoint.parse().getTime()
+        const t1 = TimePoint.parse(null)
+        const t2 = TimePoint.parse()
 
-        assert.strictEqual(t1, t2)
+        assert.strictEqual(t1.getTime(), t2.getTime())
     })
 
     it(`TimePoint.parse(false).getTime() === TimePoint.parse().getTime()`, () => {
-        const t1 = TimePoint.parse(false).getTime()
-        const t2 = TimePoint.parse().getTime()
+        const t1 = TimePoint.parse(false)
+        const t2 = TimePoint.parse()
 
-        assert.strictEqual(t1, t2)
+        assert.strictEqual(t1.getTime(), t2.getTime())
     })
 
     it(`TimePoint.parse(0).getTime() === new Date(0).getTime()`, () => {
