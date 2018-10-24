@@ -7,14 +7,14 @@ describe(`TimePoint.prototype.getTime`, () => {
         const time1 = TimePoint.parse('2018-10-01 20:30:00').getTime()
         const time2 = Date.parse('2018/10/01 20:30:00')
 
-        assert.equal(time1, time2)
+        assert.strictEqual(time1, time2)
     })
 
     it(`The value of getTime() should be same with the date.getTime()`, () => {
         const date = new Date()
         const t = TimePoint.parse(date)
 
-        assert.equal(date.getTime(), t.getTime())
+        assert.strictEqual(date.getTime(), t.getTime())
     })
 
 })

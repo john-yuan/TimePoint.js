@@ -6,25 +6,25 @@ describe('TimePoint.parse', () => {
     it(`TimePoint.parse('2018-10-01 12:30:00').format() === '2018-10-01 12:30:00'`, () => {
         const format = TimePoint.parse('2018-10-01 12:30:00').format()
         const expected = '2018-10-01 12:30:00'
-        assert.equal(format, expected)
+        assert.strictEqual(format, expected)
     })
 
     it(`TimePoint.parse('2018/10/01 12:30:00').format() === '2018-10-01 12:30:00'`, () => {
         const format = TimePoint.parse('2018/10/01 12:30:00').format()
         const expected = '2018-10-01 12:30:00'
-        assert.equal(format, expected)
+        assert.strictEqual(format, expected)
     })
 
     it(`TimePoint.parse('2018-10-1 12:30:0').format() === '2018-10-01 12:30:00'`, () => {
         const format = TimePoint.parse('2018-10-1 12:30:0').format()
         const expected = '2018-10-01 12:30:00'
-        assert.equal(format, expected)
+        assert.strictEqual(format, expected)
     })
 
     it(`TimePoint.parse('2018/10/1 12:30:0').format() === '2018-10-01 12:30:00'`, () => {
         const format = TimePoint.parse('2018/10/1 12:30:0').format()
         const expected = '2018-10-01 12:30:00'
-        assert.equal(format, expected)
+        assert.strictEqual(format, expected)
     })
 
     it(`TimePoint.parse('2018-10-01 12:30:00').getTime() === 1538368200000`, () => {
@@ -38,21 +38,21 @@ describe('TimePoint.parse', () => {
         d.setMinutes(30)
         d.setSeconds(0)
 
-        assert.equal(t.getTime(), d.getTime())
+        assert.strictEqual(t.getTime(), d.getTime())
     })
 
     it(`TimePoint.parse(1538368200000).getTime() === 1538368200000`, () => {
         const time = TimePoint.parse(1538368200000).getTime()
         const expected = 1538368200000
 
-        assert.equal(time, expected)
+        assert.strictEqual(time, expected)
     })
 
     it(`TimePoint.parse('1538368200000').getTime() === 1538368200000`, () => {
         const time = TimePoint.parse(1538368200000).getTime()
         const expected = 1538368200000
 
-        assert.equal(time, expected)
+        assert.strictEqual(time, expected)
     })
 
     it(`create TimePoint instance from a TimePoint instance`, () => {
@@ -66,49 +66,49 @@ describe('TimePoint.parse', () => {
 
         const t2 = new TimePoint(t1)
 
-        assert.equal(t1.getTime(), t2.getTime())
+        assert.strictEqual(t1.getTime(), t2.getTime())
     })
 
     it(`create TimePoint instance from a Date instance`, () => {
         const d = new Date()
         const t = new TimePoint(d)
 
-        assert.equal(d.getTime(), t.getTime())
+        assert.strictEqual(d.getTime(), t.getTime())
     })
 
     it(`TimePoint.parse() is the current time`, () => {
         const d = new Date()
         const t = new TimePoint()
 
-        assert.equal(d.getTime(), t.getTime())
+        assert.strictEqual(d.getTime(), t.getTime())
     })
 
     it(`TimePoint.parse(NaN).getTime() === TimePoint.parse().getTime()`, () => {
         const t1 = TimePoint.parse(NaN).getTime()
         const t2 = TimePoint.parse().getTime()
 
-        assert.equal(t1, t2)
+        assert.strictEqual(t1, t2)
     })
 
     it(`TimePoint.parse(null).getTime() === TimePoint.parse().getTime()`, () => {
         const t1 = TimePoint.parse(null).getTime()
         const t2 = TimePoint.parse().getTime()
 
-        assert.equal(t1, t2)
+        assert.strictEqual(t1, t2)
     })
 
     it(`TimePoint.parse(false).getTime() === TimePoint.parse().getTime()`, () => {
         const t1 = TimePoint.parse(false).getTime()
         const t2 = TimePoint.parse().getTime()
 
-        assert.equal(t1, t2)
+        assert.strictEqual(t1, t2)
     })
 
     it(`TimePoint.parse(0).getTime() === new Date(0).getTime()`, () => {
         const t = TimePoint.parse(0)
         const d = new Date(0);
 
-        assert.equal(t.getTime(), d.getTime())
+        assert.strictEqual(t.getTime(), d.getTime())
     })
 
 })

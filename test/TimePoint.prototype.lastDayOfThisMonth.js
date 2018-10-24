@@ -5,62 +5,62 @@ describe(`TimePoint.prototype.lastDayOfThisMonth`, function () {
 
     it(`last day of 2018-01 is 31`, () => {
         const t = TimePoint.parse('2018-01')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-02 is 28`, () => {
         const t = TimePoint.parse('2018-02')
-        assert.equal(t.lastDayOfThisMonth(), 28)
+        assert.strictEqual(t.lastDayOfThisMonth(), 28)
     })
 
     it(`last day of 2018-03 is 31`, () => {
         const t = TimePoint.parse('2018-03')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-04 is 30`, () => {
         const t = TimePoint.parse('2018-04')
-        assert.equal(t.lastDayOfThisMonth(), 30)
+        assert.strictEqual(t.lastDayOfThisMonth(), 30)
     })
 
     it(`last day of 2018-05 is 31`, () => {
         const t = TimePoint.parse('2018-05')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-06 is 30`, () => {
         const t = TimePoint.parse('2018-06')
-        assert.equal(t.lastDayOfThisMonth(), 30)
+        assert.strictEqual(t.lastDayOfThisMonth(), 30)
     })
 
     it(`last day of 2018-07 is 31`, () => {
         const t = TimePoint.parse('2018-07')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-08 is 31`, () => {
         const t = TimePoint.parse('2018-08')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-09 is 30`, () => {
         const t = TimePoint.parse('2018-09')
-        assert.equal(t.lastDayOfThisMonth(), 30)
+        assert.strictEqual(t.lastDayOfThisMonth(), 30)
     })
 
     it(`last day of 2018-10 is 31`, () => {
         const t = TimePoint.parse('2018-10')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of 2018-11 is 30`, () => {
         const t = TimePoint.parse('2018-11')
-        assert.equal(t.lastDayOfThisMonth(), 30)
+        assert.strictEqual(t.lastDayOfThisMonth(), 30)
     })
 
     it(`last day of 2018-12 is 31`, () => {
         const t = TimePoint.parse('2018-12')
-        assert.equal(t.lastDayOfThisMonth(), 31)
+        assert.strictEqual(t.lastDayOfThisMonth(), 31)
     })
 
     it(`last day of the month 2 of the leap year is 29`, () => {
@@ -101,9 +101,9 @@ describe(`TimePoint.prototype.lastDayOfThisMonth`, function () {
             let lastDay = TimePoint.parse(month).lastDayOfThisMonth()
 
             if (leapYears.indexOf(year) > -1) {
-                assert.equal(lastDay, 29)
+                assert.strictEqual(lastDay, 29)
             } else {
-                assert.equal(lastDay, 28)
+                assert.strictEqual(lastDay, 28)
             }
 
             start += 1;
