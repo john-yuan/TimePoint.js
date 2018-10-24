@@ -14,6 +14,10 @@ TimePoint 是一个时间工具类，用于简化时间的解析和格式化操�
 * [API](#api)
     * [TimePoint.parse([time])](#timepointparsetime)
     * [TimePoint.prototype.getTime()](#timepointprototypegettime)
+    * [TimePoint.prototype.getDate()](#timepointprototypegetdate)
+    * [TimePoint.prototype.lastDayOfThisMonth()](#timepointprototypelastdayofthismonth)
+    * [TimePoint.prototype.clone()](#timepointprototypeclone)
+    * [TimePoint.prototype.copy()](#timepointprototypecopy)
 * [附录](#附录)
     * [一、日期模板映射表](#一日期模板映射表)
     * [二、时间差值模板映射表](#二时间差值模板映射表)
@@ -123,6 +127,8 @@ console.log(text); // 距离双11还有40天13小时38分28秒
 ## API
 
 ### TimePoint.parse([time])
+
+解析时间方法，可以解析数字、字符串、Date 以及 TimePoint 类型的时间。
 
 * `time` {number|string|Date|TimePoint} 需要解析的时间，默认为 null，表示当前时间
 * Returns: {TimePoint} 返回一个 TimePoint 实例
@@ -240,6 +246,55 @@ var time = t.getTime();
 
 console.log(time); // 1538357400000
 ```
+
+### TimePoint.prototype.getDate()
+
+* Returns: {Date} 获取当前 TimePoint 对应的 Date 对象，每次返回一个新的 Date 实例
+
+```js
+var t = TimePoint.parse();
+var d1 = t.getDate();
+var d2 = t.getDate();
+
+console.log(d1 !== d2); // true
+console.log(d1 instanceof Date); // true
+console.log(d1.getTime() === t.getTime()); // true
+console.log(d1.getTime() === d2.getTime()); // true
+```
+
+### TimePoint.prototype.lastDayOfThisMonth()
+
+* Returns: {number} 返回当前时间所在月份的最后一天的号数
+
+```js
+var t1 = TimePoint.parse('2018-08');
+var t2 = TimePoint.parse('2019-02');
+var t3 = TimePoint.parse('2020-02');
+
+console.log(t1.lastDayOfThisMonth()); // 31
+console.log(t2.lastDayOfThisMonth()); // 28
+console.log(t3.lastDayOfThisMonth()); // 29
+```
+
+### TimePoint.prototype.clone()
+
+克隆当前 TimePoint 对象。
+
+* Returns: {TimePoint} 返回一个 TimePoint 实例
+
+```js
+var t1 = TimePoint.parse();
+var t2 = t1.clone();
+
+console.log(t1.getTime() === t2.getTime()); // true
+console.log(t2 instanceof TimePoint); // true
+```
+
+### TimePoint.prototype.copy()
+
+此方法为 TimePoint.prototype.clone() 方法的别名。
+
+* Returns: {TimePoint} 返回一个 TimePoint 实例
 
 ## 附录
 
