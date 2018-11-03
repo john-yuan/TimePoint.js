@@ -613,33 +613,49 @@ var TimePoint = (function () {
     };
 
     /**
-     * 一个简单的模板引擎，以 {} 为分界符
+     * 模板函数
      *
-     * @param {string} template
-     * @param {Object} data
-     * @returns {string}
+     * @version 1.0.1
+     * @param {string} template 模板字符串
+     * @param {Object.<string, *>} data 数据对象
+     * @returns {string} 编译之后的文本
      */
     TimePoint.tpl = function (template, data) {
-        // 如果参数为 null 或 undefined 则使用默认值
-        template = template == null ? '' : template;
-        data = data == null ? {} : data;
-        // 确保 template 为字符串类型
+        var str = [];
+        var res = null;
+        var regexp = /(^|[^\\])\{([^\{\}]*[^\\])?\}/;
+
+        // 确保参数类型正确
         template = '' + template;
+        data = data || {};
 
-        return template.replace(/(^|[^\\])\{([^\{]*?)([^\\])\}/g, function (s, l, m, r) {
+        while ( res = regexp.exec(template) ) {
+            var index = res.index;
+            var match = res[0];
+            var prefix = res[1];
+            var key = res[2];
 
-            var key = m + r;
+            // 去除 key 首尾的空格
+            key = (key || '').replace(/^\s+|\s+$/g, '');
+            // 保存 key 之前的文本内容
+            str.push( template.substr( 0, index + prefix.length ) );
+            // 保存 key 对应的值
+            str.push( '' + data[key] );
+            // 截取剩下未使用的模板字符串
+            template = template.substr( index + match.length );
+            // 重置 lastIndex（IE 在非全局匹配的模式也会改变 lastIndex）
+            regexp.lastIndex = 0;
+        }
 
-            key = trim(key);
+        // 保存 key 之后的文本内容
+        str.push(template);
 
-            var val = data[key];
+        // 拼接字符串并将 \{ 和 \} 替换为 { 和 }
+        str = str.join('');
+        str = str.replace(/\\\{/g, '{');
+        str = str.replace(/\\\}/g, '}');
 
-            // 如果 val 为 undefined 或者 null 则返回空字符串
-            val = val == null ? '' : val;
-
-            return l + val;
-
-        }).replace(/\\\{/, '{').replace(/\\\}/, '}');
+        return str;
     };
 
     /**
