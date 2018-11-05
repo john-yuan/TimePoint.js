@@ -57,6 +57,17 @@ var TimePoint = (function () {
     };
 
     /**
+     * 获取当前月份第一天对应的 TimePoint 对象
+     *
+     * @returns {TimePoint}
+     */
+    TimePoint.prototype.toFirstDayOfThisMonth = function () {
+        var text = this.format('YYYY-MM-01 hh:mm:ss.SSS');
+
+        return TimePoint.parse(text);
+    };
+
+    /**
      * 获取当前月份最后一天对应的 TimePoint 对象
      *
      * @returns {TimePoint}
