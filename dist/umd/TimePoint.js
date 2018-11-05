@@ -57,6 +57,18 @@ var TimePoint = (function () {
     };
 
     /**
+     * 获取当前月份最后一天对应的 TimePoint 对象
+     *
+     * @returns {TimePoint}
+     */
+    TimePoint.prototype.toLastDayOfThisMonth = function () {
+        var lastDay = this.lastDayOfThisMonth();
+        var text = this.format('YYYY-MM-' + lastDay + ' hh:mm:ss.SSS');
+
+        return TimePoint.parse(text);
+    };
+
+    /**
      * 克隆当前对象
      *
      * @returns {TimePoint} 一个新的 TimePoint 实例
