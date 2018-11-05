@@ -18,6 +18,7 @@ TimePoint 是一个时间工具类，用于简化时间的解析和格式化操�
     * [TimePoint.prototype.lastDayOfThisMonth()](#timepointprototypelastdayofthismonth)
     * [TimePoint.prototype.clone()](#timepointprototypeclone)
     * [TimePoint.prototype.copy()](#timepointprototypecopy)
+    * [TimePoint.prototype.clearMs()](#timepointprototypeclearms)
 * [附录](#附录)
     * [一、日期模板映射表](#一日期模板映射表)
     * [二、时间差值模板映射表](#二时间差值模板映射表)
@@ -295,6 +296,20 @@ console.log(t2 instanceof TimePoint); // true
 此方法为 TimePoint.prototype.clone() 方法的别名。
 
 * Returns: {TimePoint} 返回一个 TimePoint 实例
+
+### TimePoint.prototype.clearMs()
+
+移除当前 TimePoint 的毫秒部分，并以此为初始值构造一个新的 TimePoint 实例。
+
+* Returns: {TimePoint} 返回一个 TimePoint 实例
+
+```js
+var t1 = TimePoint.parse(1538366400456);
+var t2 = t1.clearMs();
+
+console.log(t1.getTime()); // 1538366400456
+console.log(t2.getTime()); // 1538366400000
+```
 
 ## 附录
 
