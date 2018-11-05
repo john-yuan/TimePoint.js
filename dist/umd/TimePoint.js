@@ -646,11 +646,12 @@ var TimePoint = (function () {
     };
 
     /**
-     * 获取两个日期之间的日期字符串数组（不包含时间数据）
+     * 获取两个日期之间的日期列表
      *
      * @example
      * // returns ["2018-10-21", "2018-10-22", "2018-10-23"]
      * TimePoint.getDateList('2018-10-21', '2018-10-23')
+     *
      * @param {number|string|Date|TimePoint} start
      * @param {number|string|Date|TimePoint} end
      * @returns {string[]} 返回一个日期字符串数组
@@ -672,6 +673,59 @@ var TimePoint = (function () {
         }
 
         return dateList;
+    };
+
+    /**
+     * 获取两个日期之间的月份列表
+     *
+     * @example
+     * // returns ["2017-01", "2017-02", "2017-03"]
+     * TimePoint.getMonthList('2017-01', '2017-03')
+     *
+     * @param {number|string|Date|TimePoint} start
+     * @param {number|string|Date|TimePoint} end
+     * @returns {string[]} 返回一个月份字符串数组
+     */
+    TimePoint.getMonthList = function (start, end) {
+        var startDate = TimePoint.parse(start).getDate();
+        var endDate = TimePoint.parse(end).getDate();
+        var startYear = startDate.getFullYear();
+        var startMonth = startDate.getMonth() + 1;
+        var endYear = endDate.getFullYear();
+        var endMonth = endDate.getMonth() + 1;
+        var monthList = [];
+        var monthText;
+
+        /**
+         * 判断是否有下个月
+         *
+         * @param {number} startYear
+         * @param {number} startMonth
+         * @param {number} endYear
+         * @param {number} endMonth
+         * @returns {boolean}
+         */
+        var hasNext = function (startYear, startMonth, endYear, endMonth) {
+            if (startYear < endYear) {
+                return true;
+            } else if (startYear === endYear) {
+                return startMonth <= endMonth;
+            }
+            return false;
+        };
+
+        while ( hasNext(startYear, startMonth, endYear, endMonth) ) {
+            monthText = startMonth > 9 ? startMonth : ('0' + startMonth);
+            monthText = startYear + '-' + monthText;
+            monthList.push(monthText);
+            startMonth += 1;
+            if (startMonth > 12) {
+                startMonth = 1;
+                startYear += 1;
+            }
+        }
+
+        return monthList;
     };
 
     /**
