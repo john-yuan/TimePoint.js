@@ -613,6 +613,35 @@ var TimePoint = (function () {
     };
 
     /**
+     * 获取两个日期之间的日期字符串数组（不包含时间数据）
+     *
+     * @example
+     * // returns ["2018-10-21", "2018-10-22", "2018-10-23"]
+     * TimePoint.getDateList('2018-10-21', '2018-10-23')
+     * @param {number|string|Date|TimePoint} start
+     * @param {number|string|Date|TimePoint} end
+     * @returns {string[]} 返回一个日期字符串数组
+     */
+    TimePoint.getDateList = function (start, end) {
+        var dayDiff = 0;
+        var dateList = [];
+
+        start = TimePoint.parse(start);
+        end = TimePoint.parse(end);
+
+        dayDiff = TimePoint.dayDiffWithoutTime(start, end);
+        dateList = [];
+
+        while (dayDiff >= 0) {
+            dateList.push(start.format('YYYY-MM-DD'));
+            start = start.nextDay();
+            dayDiff = TimePoint.dayDiffWithoutTime(start, end);
+        }
+
+        return dateList;
+    };
+
+    /**
      * 模板函数
      *
      * @version 1.0.1
