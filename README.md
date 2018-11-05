@@ -102,7 +102,7 @@ console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年�
 
 ```js
 var lastDay1 = TimePoint.parse('2020-02').lastDayOfThisMonth(); // 解法1
-var lastDay2 = TimePoint.lastDayInMonth(2020, 2);               // 解法2
+var lastDay2 = TimePoint.lastDayOfTheMonth(2020, 2);               // 解法2
 
 console.log(lastDay1); // 29
 console.log(lastDay2); // 29

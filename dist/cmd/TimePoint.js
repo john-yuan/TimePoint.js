@@ -43,7 +43,10 @@ var TimePoint = (function () {
      */
     TimePoint.prototype.lastDayOfThisMonth = function () {
         var date = this.getDate();
-        return TimePoint.lastDayInMonth(date.getFullYear(), date.getMonth() + 1);
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+
+        return TimePoint.lastDayOfTheMonth(year, month);
     };
 
     /**
@@ -526,7 +529,7 @@ var TimePoint = (function () {
      * @param {number} month 表示月份的整数，范围为 1 到 12
      * @returns {number}
      */
-    TimePoint.lastDayInMonth = function (year, month) {
+    TimePoint.lastDayOfTheMonth = function (year, month) {
         year = parseInt(year, 10);
         year = isNaN(year) ? 0 : year;
 
