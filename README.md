@@ -80,14 +80,14 @@ TimePoint.prototype.format([format])
 是一个简单的日期格式化函数，能满足大部分场景下的需求。但是如果你的格式较为复杂，请使用：
 
 ```js
-TimePoint.prototype.stringify([template])
+TimePoint.prototype.template([template])
 ```
 
 函数进行模板渲染。示例如下：
 
 ```js
 var t3 = TimePoint.parse('2018-10-01 09:30:00');
-var text = t3.stringify('模板引擎使用 \\{YYYY\\} 表示年份，比如当前年份为：{YYYY}');
+var text = t3.template('模板引擎使用 \\{YYYY\\} 表示年份，比如当前年份为：{YYYY}');
 
 console.log(text); // 模板引擎使用 {YYYY} 表示年份，比如当前年份为：2018
 ```
@@ -118,7 +118,7 @@ console.log(lastDay2); // 29
 var t1 = TimePoint.parse('2018-10-01 10:21:32');
 var t2 = TimePoint.parse('2018-11-11 00:00:00');
 var diff = TimePoint.timeDiffDetail(t1, t2);
-var text = diff.stringify('距离双11还有{d}天{h}小时{m}分{s}秒');
+var text = diff.template('距离双11还有{d}天{h}小时{m}分{s}秒');
 
 console.log(text); // 距离双11还有40天13小时38分28秒
 ```

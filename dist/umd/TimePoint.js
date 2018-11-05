@@ -340,7 +340,7 @@ var TimePoint = (function () {
      * @param {string} [template='{YYYY}-{MM}-{DD} {hh}:{mm}:{ss}']
      * @returns {string}
      */
-    TimePoint.prototype.stringify = function (template) {
+    TimePoint.prototype.template = function (template) {
         if (typeof template !== 'string') {
             template = '{YYYY}-{MM}-{DD} {hh}:{mm}:{ss}';
         }
@@ -511,7 +511,7 @@ var TimePoint = (function () {
             s: sec,
             S: ms,
             n: sign,
-            stringify: timeDiffStringify
+            template: timeDifftemplate
         };
     };
 
@@ -816,7 +816,7 @@ var TimePoint = (function () {
      * @param {string} template
      * @returns {string}
      */
-    var timeDiffStringify = function (template) {
+    var timeDifftemplate = function (template) {
         return TimePoint.tpl(template, this);
     };
 
