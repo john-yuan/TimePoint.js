@@ -16,6 +16,8 @@ TimePoint 是一个时间工具类，用于简化时间的解析和格式化操�
     * [TimePoint.prototype.getTime()](#timepointprototypegettime)
     * [TimePoint.prototype.getDate()](#timepointprototypegetdate)
     * [TimePoint.prototype.lastDayOfThisMonth()](#timepointprototypelastdayofthismonth)
+    * [TimePoint.prototype.toFirstDayOfThisMonth()](#timepointprototypetofirstdayofthismonth)
+    * [TimePoint.prototype.toLastDayOfThisMonth()](#timepointprototypetolastdayofthismonth)
     * [TimePoint.prototype.clone()](#timepointprototypeclone)
     * [TimePoint.prototype.copy()](#timepointprototypecopy)
     * [TimePoint.prototype.clearMs()](#timepointprototypeclearms)
@@ -275,6 +277,34 @@ var t3 = TimePoint.parse('2020-02');
 console.log(t1.lastDayOfThisMonth()); // 31
 console.log(t2.lastDayOfThisMonth()); // 28
 console.log(t3.lastDayOfThisMonth()); // 29
+```
+
+### TimePoint.prototype.toFirstDayOfThisMonth()
+
+* Returns: {TimePoint} 获取当前日期所在月份第一天对应的 TimePoint 实例
+
+```js
+var t1 = TimePoint.parse('2018-09-15 09:30:25.456');
+var firstDay = t1.toFirstDayOfThisMonth();
+
+// 2018/09/15 09:30:25.456
+t1.format('YYYY/MM/DD hh:mm:ss.SSS');
+// 2018/09/01 09:30:25.456
+firstDay.format('YYYY/MM/DD hh:mm:ss.SSS');
+```
+
+### TimePoint.prototype.toLastDayOfThisMonth()
+
+* Returns: {TimePoint} 获取当前日期所在月份最后一天对应的 TimePoint 实例
+
+```js
+var t1 = TimePoint.parse('2018-09-15 09:30:25.456');
+var lastDay = t1.toLastDayOfThisMonth();
+
+// 2018/09/15 09:30:25.456
+t1.format('YYYY/MM/DD hh:mm:ss.SSS');
+// 2018/09/30 09:30:25.456
+lastDay.format('YYYY/MM/DD hh:mm:ss.SSS');
 ```
 
 ### TimePoint.prototype.clone()
