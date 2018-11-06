@@ -21,6 +21,7 @@ TimePoint 是一个时间工具类，用于简化时间的解析和格式化操�
     * [TimePoint.prototype.clone()](#timepointprototypeclone)
     * [TimePoint.prototype.copy()](#timepointprototypecopy)
     * [TimePoint.prototype.clearMs()](#timepointprototypeclearms)
+    * [TimePoint.prototype.addMs(ms)](#timepointprototypeaddmsms)
 * [附录](#附录)
     * [一、日期模板映射表](#一日期模板映射表)
     * [二、时间差值模板映射表](#二时间差值模板映射表)
@@ -339,6 +340,23 @@ var t2 = t1.clearMs();
 
 console.log(t1.getTime()); // 1538366400456
 console.log(t2.getTime()); // 1538366400000
+```
+
+### TimePoint.prototype.addMs(ms)
+
+在当前时间上增加指定的毫秒数（可以为负数），并以此结果为初始只创建一个新的 TimePoint 实例。
+
+* `ms` {number} 需要添加的毫秒数，可以为负整数、0、正整数
+* Returns: {TimePoint} 返回一个 TimePoint 实例
+
+```js
+var t1 = TimePoint.parse(236);
+var t2 = t1.addMs(100);
+var t3 = t1.addMs(-100);
+
+console.log(t1.getTime()); // 236
+console.log(t2.getTime()); // 336
+console.log(t3.getTime()); // 136
 ```
 
 ## 附录
