@@ -812,7 +812,6 @@ var TimePoint = (function () {
 
     // 导出接口
     return TimePoint;
-
 })();
 
 export default TimePoint;
