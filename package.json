@@ -1,8 +1,8 @@
 {
   "name": "timepoint",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "An immutable date formatter",
-  "main": "index.js",
+  "main": "dist/cmd/TimePoint.js",
   "scripts": {
     "test": "npm run build && node ./node_modules/.bin/mocha",
     "build": "node ./dev-tools/builder/build.js",
