@@ -19,7 +19,7 @@ npm i timepoint
     * [示例四：计算时间距离](#示例四计算时间距离)
 * [API](#api)
     * [TimePoint.parse([time])](#timepointparsetime)
-    * TimePoint.now()
+    * [TimePoint.now()](#timepointnow)
     * TimePoint.at(time)
     * TimePoint.timeDiff(start, end)
     * TimePoint.secDiff(start, end)
@@ -272,6 +272,10 @@ var t2 = TimePoint.parse(t1);
 
 console.log(t1.getTime() === t2.getTime()); // true
 ```
+
+### TimePoint.now()
+
+* Returns: {number} 返回当前系统时间的毫秒数
 
 ### TimePoint.prototype.getTime()
 
