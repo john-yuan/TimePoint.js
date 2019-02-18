@@ -1,4 +1,4 @@
-const assert = require('assert');
+const assert = require('assert')
 const TimePoint = require('../dist/cmd/TimePoint')
 
 describe('TimePoint.parse', () => {
