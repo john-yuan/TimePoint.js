@@ -4,7 +4,7 @@
   "description": "An immutable date formatter",
   "main": "dist/cmd/TimePoint.js",
   "scripts": {
-    "test": "npm run build && node ./node_modules/.bin/mocha",
+    "test": "npm run build && mocha",
     "build": "node ./dev-tools/builder/build.js",
     "start": "node ./dev-tools/server/server.js"
   },
