@@ -37,8 +37,8 @@ describe('TimePoint.prototype.getLastDay', function () {
         const t2 = t1.getLastDay()
 
         assert.strictEqual(
-            t1.format('YYYY/MM hh:mm:dd.SSS'),
-            t2.format('YYYY/MM hh:mm:dd.SSS')
+            t1.format('YYYY/MM HH:mm:dd.SSS'),
+            t2.format('YYYY/MM HH:mm:dd.SSS')
         )
     })
 

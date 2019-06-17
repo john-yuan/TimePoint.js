@@ -4,7 +4,7 @@ const TimePoint = timepoint.TimePoint
 
 describe('TimePoint.prototype.format default', () => {
 
-    it(`The default format is YYYY-MM-DD hh:mm:ss`, () => {
+    it(`The default format is YYYY-MM-DD HH:mm:ss`, () => {
         const format = timepoint.parse('2018-10-01 12:30:00').format()
 
         assert.strictEqual(format, '2018-10-01 12:30:00')
@@ -74,20 +74,20 @@ describe('TimePoint.prototype.format day', () => {
 
 describe('TimePoint.prototype.format hour', () => {
 
-    it(`hh is the hour without leading zero if the hour is greater than 9`, () => {
-        const format = timepoint.parse('2018-10-12 12:30:00').format('hh')
+    it(`HH is the hour without leading zero if the hour is greater than 9`, () => {
+        const format = timepoint.parse('2018-10-12 12:30:00').format('HH')
 
         assert.strictEqual(format, '12')
     })
 
-    it(`hh is the hour with a leading zero if the hour is less than 10`, () => {
-        const format = timepoint.parse('2018-09-01 09:30:00').format('hh')
+    it(`HH is the hour with a leading zero if the hour is less than 10`, () => {
+        const format = timepoint.parse('2018-09-01 09:30:00').format('HH')
 
         assert.strictEqual(format, '09')
     })
 
     it(`h is the hour without leading zero`, () => {
-        const format = timepoint.parse('2018-09-01 09:30:00').format('h')
+        const format = timepoint.parse('2018-09-01 09:30:00').format('H')
 
         assert.strictEqual(format, '9')
     })
@@ -140,38 +140,38 @@ describe('TimePoint.prototype.format second', () => {
 
 describe('TimePoint.prototype.format', () => {
 
-    it(`timepoint.parse('2018-10-01 12:30:00').format('YYYY/MM/DD hh:mm:ss') === '2018/10/01 12:30:00'`, () => {
-        const format = timepoint.parse('2018-10-01 12:30:00').format('YYYY/MM/DD hh:mm:ss')
+    it(`timepoint.parse('2018-10-01 12:30:00').format('YYYY/MM/DD HH:mm:ss') === '2018/10/01 12:30:00'`, () => {
+        const format = timepoint.parse('2018-10-01 12:30:00').format('YYYY/MM/DD HH:mm:ss')
 
         assert.strictEqual(format, '2018/10/01 12:30:00')
     })
 
-    it(`timepoint.parse('2018-10-01 12:30:00').format('YY/MM/DD hh:mm:ss') === '18/10/01 12:30:00'`, () => {
-        const format = timepoint.parse('2018-10-01 12:30:00').format('YY/MM/DD hh:mm:ss')
+    it(`timepoint.parse('2018-10-01 12:30:00').format('YY/MM/DD HH:mm:ss') === '18/10/01 12:30:00'`, () => {
+        const format = timepoint.parse('2018-10-01 12:30:00').format('YY/MM/DD HH:mm:ss')
 
         assert.strictEqual(format, '18/10/01 12:30:00')
     })
 
-    it(`timepoint.parse('2018-10-01 12:30:00').format('hh:mm:ss') === '12:30:00'`, () => {
-        const format = timepoint.parse('2018-10-01 12:30:00').format('hh:mm:ss')
+    it(`timepoint.parse('2018-10-01 12:30:00').format('HH:mm:ss') === '12:30:00'`, () => {
+        const format = timepoint.parse('2018-10-01 12:30:00').format('HH:mm:ss')
 
         assert.strictEqual(format, '12:30:00')
     })
 
-    it(`timepoint.parse('2018-10-01 12:30:00').format('hh:mm') === '12:30'`, () => {
-        const format = timepoint.parse('2018-10-01 12:30:00').format('hh:mm')
+    it(`timepoint.parse('2018-10-01 12:30:00').format('HH:mm') === '12:30'`, () => {
+        const format = timepoint.parse('2018-10-01 12:30:00').format('HH:mm')
 
         assert.strictEqual(format, '12:30')
     })
 
-    it(`timepoint.parse('2018-10-01 12:01:00').format('h:m:s') === '12:1:0'`, () => {
-        const format = timepoint.parse('2018-10-01 12:01:00').format('h:m:0')
+    it(`timepoint.parse('2018-10-01 12:01:00').format('H:m:s') === '12:1:0'`, () => {
+        const format = timepoint.parse('2018-10-01 12:01:00').format('H:m:0')
 
         assert.strictEqual(format, '12:1:0')
     })
 
-    it(`timepoint.parse('2018-10-01 12:01:00').format('h:m') === '12:1'`, () => {
-        const format = timepoint.parse('2018-10-01 12:01:00').format('h:m')
+    it(`timepoint.parse('2018-10-01 12:01:00').format('H:m') === '12:1'`, () => {
+        const format = timepoint.parse('2018-10-01 12:01:00').format('H:m')
 
         assert.strictEqual(format, '12:1')
     })

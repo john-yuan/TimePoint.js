@@ -25,8 +25,8 @@ describe('TimePoint.prototype.getFirstDay', function () {
         const t2 = t1.getFirstDay()
 
         assert.strictEqual(
-            t1.format('YYYY/MM hh:mm:dd.SSS'),
-            t2.format('YYYY/MM hh:mm:dd.SSS')
+            t1.format('YYYY/MM HH:mm:dd.SSS'),
+            t2.format('YYYY/MM HH:mm:dd.SSS')
         )
     })
 
