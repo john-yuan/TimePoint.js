@@ -1,0 +1,31 @@
+{
+  "name": "timepoint",
+  "version": "1.0.0-alpha",
+  "description": "A simple date formatter.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev.js",
+    "test": "npm run build && mocha"
+  },
+  "keywords": [
+    "TimePoint",
+    "dateformatter"
+  ],
+  "author": "JOHN YUAN",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-yuan/TimePoint.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/john-yuan/TimePoint.js/issues"
+  },
+  "homepage": "https://github.com/john-yuan/TimePoint.js#readme",
+  "devDependencies": {
+    "@john-yuan/dev-browserify-builder": "^1.0.1",
+    "@john-yuan/dev-browserify-watcher": "^1.0.6",
+    "@john-yuan/dev-server": "^1.2.0",
+    "mocha": "^6.1.4"
+  }
+}
