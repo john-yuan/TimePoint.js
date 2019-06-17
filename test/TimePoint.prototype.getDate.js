@@ -1,6 +1,5 @@
 const assert = require('assert')
 const timepoint = require('../lib/index')
-const TimePoint = timepoint.TimePoint
 
 describe(`TimePoint.prototype.getDate`, () => {
 
